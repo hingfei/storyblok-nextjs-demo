@@ -1,6 +1,6 @@
 import React from "react";
 import { StoryblokStory } from "@storyblok/react/rsc";
-import { getStoryblokApi } from "@/app/lib/storyblok";
+import { getStoryblokApi } from "@/lib/storyblok";
 
 const fetchHomePage = async () => {
     const api = getStoryblokApi();
