@@ -1,7 +1,7 @@
 import React from "react";
 import { StoryblokStory } from "@storyblok/react/rsc";
-import { getStoryblokApi } from "@/lib/storyblok";
 import RecommendedTour from "@/components/RecommendedTour";
+import { getStoryblokApi } from "@/lib/storyblok";
 
 const fetchToursPage = async () => {
     const api = getStoryblokApi();
@@ -13,12 +13,10 @@ const fetchToursPage = async () => {
 
 const fetchAllTours = async () => {
     const api = getStoryblokApi();
-    const { data } = await api.getStories(
-        {
-            content_type: "tour",
-            version: process.env.NODE_ENV === "development" ? "draft" : "published",
-        },
-    );
+    const { data } = await api.getStories({
+        content_type: "tour",
+        version: process.env.NODE_ENV === "development" ? "draft" : "published",
+    });
     return data.stories;
 };
 
