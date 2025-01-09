@@ -1,11 +1,17 @@
 import React from "react";
-import { StoryblokServerComponent } from "@storyblok/react/rsc";
+import {
+    StoryblokServerComponent,
+    storyblokEditable,
+} from "@storyblok/react/rsc";
 
 const Page = (props: any) => {
     return (
-        <main>
+        <main {...storyblokEditable(props.blok)}>
             {props.blok.blocks.map((nestedBlok: any) => (
-                <StoryblokServerComponent blok={nestedBlok} key={nestedBlok._uid} />
+                <StoryblokServerComponent
+                    blok={nestedBlok}
+                    key={nestedBlok._uid}
+                />
             ))}
         </main>
     );
