@@ -1,4 +1,5 @@
 import React from "react";
+import { storyblokEditable } from "@storyblok/react/rsc";
 
 interface BlokTypes {
     blok: {
@@ -9,9 +10,14 @@ interface BlokTypes {
 
 const Testimonial = ({ blok }: BlokTypes) => {
     return (
-        <div className={"bg-white p-8 rounded-sm shadow-md"}>
-            <p className={"text-xl leading-relaxed text-gray-700"}>{blok.comment}</p>
-            <h3 className={"text-lg font-semibold mt-6"}>{blok.name}</h3>
+        <div
+            {...storyblokEditable(blok)}
+            className={"rounded-sm bg-white p-8 shadow-md"}
+        >
+            <p className={"text-xl leading-relaxed text-gray-700"}>
+                {blok.comment}
+            </p>
+            <h3 className={"mt-6 text-lg font-semibold"}>{blok.name}</h3>
         </div>
     );
 };

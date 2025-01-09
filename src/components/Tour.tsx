@@ -1,9 +1,12 @@
 import React from "react";
-import { renderRichText } from "@storyblok/react/rsc";
+import { renderRichText, storyblokEditable } from "@storyblok/react/rsc";
 
 const Tour = (props: any) => {
     return (
-        <main className={"container mx-auto w-full px-4 pb-16 pt-32"}>
+        <main
+            {...storyblokEditable(props.blok)}
+            className={"container mx-auto w-full px-4 pb-16 pt-32"}
+        >
             <h1 className={"text-3xl font-bold md:text-5xl"}>
                 {props.blok.name}
             </h1>
@@ -16,7 +19,7 @@ const Tour = (props: any) => {
                 {props.blok.introduction}
             </p>
             <div
-                className={"prose md:prose-lg mt-16 max-w-none"}
+                className={"prose mt-16 max-w-none md:prose-lg"}
                 dangerouslySetInnerHTML={{
                     __html: renderRichText(props?.blok?.body) || "",
                 }}

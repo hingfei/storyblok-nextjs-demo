@@ -1,5 +1,6 @@
 import React from "react";
 import { StoryblokStory } from "@storyblok/react/rsc";
+import { draftMode } from "next/headers";
 import { getStoryblokApi } from "@/lib/storyblok";
 
 export const generateStaticParams = async () => {
@@ -13,9 +14,13 @@ export const generateStaticParams = async () => {
 };
 
 const fetchTourPage = async (slug: string) => {
+    const { isEnabled } = await draftMode();
     const api = getStoryblokApi();
     const { data } = await api.getStory(`tours/${slug}`, {
-        version: process.env.NODE_ENV === "development" ? "draft" : "published",
+        version:
+            process.env.NODE_ENV === "development" || isEnabled
+                ? "draft"
+                : "published",
     });
     return data.story;
 };
