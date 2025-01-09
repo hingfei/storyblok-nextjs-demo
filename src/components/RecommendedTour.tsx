@@ -5,8 +5,11 @@ const RecommendedTour = (props: any) => {
     return (
         <div className={"rounded-sm bg-white shadow-md"}>
             <img
-                src={props.story.content.main_image.filename}
-                alt=""
+                src={`${props.story.content.main_image.filename}/m/736x414/filters:quality(70)`}
+                width={736}
+                height={414}
+                alt={props.story.content.main_image.alt}
+                loading={"lazy"}
                 className={"aspect-video w-full object-cover"}
             />
             <div className={"p-8"}>
